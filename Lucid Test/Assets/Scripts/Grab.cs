@@ -30,6 +30,38 @@ public class Grab : MonoBehaviour {
         
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
+
+            if(rayHit.collider.gameObject.tag == "platformGrab")
+            {
+                rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
+                rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+
+                
+
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+
+                    Debug.Log("I'm grabbing the object!");
+                    rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+                    GameObject objectToMove = rayHit.collider.gameObject;
+                    if(Input.GetKeyDown(KeyCode.A))
+                        objectToMove.transform.Translate(-1,0,0);
+
+                    if (Input.GetKeyDown(KeyCode.D))
+                        objectToMove.transform.Translate(1,0,0);
+
+                    //rayHit.collider.gameObject.transform.parent = transform;
+
+
+                }
+                
+                    
+
+                
+
+
+            }
+
             if (rayHit.collider.gameObject.tag == "Grab")
             {
                 //float savedDistance;
