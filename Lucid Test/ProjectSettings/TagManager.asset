@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Fire
   - Door
+  - PlayerWall
+  - WP
+  - Grab
+  - key
+  - final wall
+  - platformGrab
   layers:
   - Default
   - TransparentFX
