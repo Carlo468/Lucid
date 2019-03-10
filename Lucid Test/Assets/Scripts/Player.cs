@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -25,6 +26,15 @@ public class Player : MonoBehaviour {
             numKeys++;
            // spawnps(collision.transform);
             Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider coll)
+    {
+        print("I hit (collided with)" + coll.gameObject.name);
+        if (coll.gameObject.tag == "woodDoor")
+        {
+            SceneManager.LoadScene("forestLevel");
         }
     }
 
