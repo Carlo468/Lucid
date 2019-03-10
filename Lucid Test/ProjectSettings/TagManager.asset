@@ -12,6 +12,8 @@ TagManager:
   - key
   - final wall
   - platformGrab
+  - end
+  - nextLevel
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,15 @@ public class Player : MonoBehaviour {
     
     public static int numKeys;
     GameObject a;
+    GameObject go;
     public GameObject img;
+
+    void Awake()
+    {
+        go = GameObject.FindWithTag("end");
+        go.SetActive(false);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         print("I hit (collided with)" + collision.gameObject.name);
@@ -22,20 +30,22 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        if(numKeys == 1)
+        if(numKeys == 2)
         {
             a = GameObject.FindWithTag("WP");
             Destroy(a);
         }
-        if (numKeys == 4)
+        if (numKeys == 5)
         {
             a = GameObject.FindWithTag("final wall");
             Destroy(a);
         }
 
-        if(numKeys == 5)
+        if(numKeys == 6)
         {
-            img.SetActive(true);
+             
+            go.SetActive(true);
+            //img.SetActive(true);
         }
     }
    

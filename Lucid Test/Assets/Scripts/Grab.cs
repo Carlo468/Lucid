@@ -16,8 +16,11 @@ public class Grab : MonoBehaviour {
 
     public Transform objThrowPos;
     GameObject throwObj;
-
+    Material curMat;
+    public Material grabMat;
+    GameObject objectToMove;
     public int Force;
+    public float moveSpeed;
 
     //public Light light;
     // Use this for initialization
@@ -39,28 +42,60 @@ public class Grab : MonoBehaviour {
 
                 
 
-                if (Input.GetKey(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-
-                    Debug.Log("I'm grabbing the object!");
+                    
+                    Debug.Log("I'm saving the platform!");
                     rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
-                    GameObject objectToMove = rayHit.collider.gameObject;
-                    if(Input.GetKeyDown(KeyCode.A))
-                        objectToMove.transform.Translate(-1,0,0);
 
-                    if (Input.GetKeyDown(KeyCode.D))
-                        objectToMove.transform.Translate(1,0,0);
+                    objectToMove = rayHit.collider.gameObject;
+
+                    objectToMove.GetComponent<Renderer>().material = grabMat;
+
 
                     //rayHit.collider.gameObject.transform.parent = transform;
+                    Debug.Log("x: " +Input.mouseScrollDelta.x);
+                    Debug.Log("y: " +Input.mouseScrollDelta.y);
 
-
-                }
-                
                     
 
+
+                    /*
+                    GameObject objectToMove = rayHit.collider.gameObject;
+                    objectToMove.GetComponent<Renderer>().material = grabMat;
+                    transform.
+                    if(Input.GetKey(KeyCode.W))
+                    {
+                        objectToMove.transform.Translate(Vector3.up * Time.deltaTime);
+                    }
+                    */
+
+                }
+
+
+               
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Debug.Log("detatching!");
+                    objectToMove.GetComponent<Renderer>().material = null;
+                    objectToMove = null;
+                }
+               
+                if(Input.GetKeyDown(KeyCode.Mouse2))
+                {
+                    Debug.Log("Rotating");
+                    objectToMove.transform.Rotate(0, 0, 90);
+                }
                 
 
 
+
+            }
+
+            if (objectToMove != null)
+            {
+                objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * moveSpeed * Time.deltaTime, 0);
             }
 
             if (rayHit.collider.gameObject.tag == "Grab")
