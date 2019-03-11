@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
     // Use this for initialization
@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     public float rayLength;
 
     public ParticleSystem ps;
+    public static bool forestLevel = false;
     void Start () {
 
 		
@@ -43,6 +44,11 @@ public class GameController : MonoBehaviour {
 
             }
             
+            if(rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
+            {
+                Debug.Log("I hit the wood door!");
+                forestLevel = true;
+            }
 
            
         }

@@ -37,8 +37,8 @@ public class Grab : MonoBehaviour {
 
             if(rayHit.collider.gameObject.tag == "platformGrab")
             {
-                rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
-                rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+                //rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
+                
 
                 
 
@@ -46,29 +46,19 @@ public class Grab : MonoBehaviour {
                 {
                     
                     Debug.Log("I'm saving the platform!");
-                    rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+                    
 
                     objectToMove = rayHit.collider.gameObject;
 
                     objectToMove.GetComponent<Renderer>().material = grabMat;
 
 
-                    //rayHit.collider.gameObject.transform.parent = transform;
+                   
                     Debug.Log("x: " +Input.mouseScrollDelta.x);
                     Debug.Log("y: " +Input.mouseScrollDelta.y);
 
                     
 
-
-                    /*
-                    GameObject objectToMove = rayHit.collider.gameObject;
-                    objectToMove.GetComponent<Renderer>().material = grabMat;
-                    transform.
-                    if(Input.GetKey(KeyCode.W))
-                    {
-                        objectToMove.transform.Translate(Vector3.up * Time.deltaTime);
-                    }
-                    */
 
                 }
 

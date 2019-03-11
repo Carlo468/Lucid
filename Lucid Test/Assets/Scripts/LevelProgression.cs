@@ -19,6 +19,11 @@ public class LevelProgression : MonoBehaviour
             Debug.Log("Seven keys have been met, traveling to nexus");
             SceneManager.LoadScene("Nexus");
         }
+
+        if (GameController.forestLevel == true)
+        {
+            SceneManager.LoadScene("Nexus");
+        }
               
     }
 }
