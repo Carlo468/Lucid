@@ -18,6 +18,8 @@ public class Grab : MonoBehaviour {
     GameObject throwObj;
     Material curMat;
     public Material grabMat;
+    GameObject objectToMove;
+    bool grab = false;
 
     public int Force;
 
@@ -31,45 +33,47 @@ public class Grab : MonoBehaviour {
     void Update()
     {
         
+
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
 
             if(rayHit.collider.gameObject.tag == "platformGrab")
             {
                 rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
-                rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+                
 
                 
 
-                if (Input.GetKey(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
-                    /*
-                    Debug.Log("I'm grabbing the object!");
-                    rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
-                    GameObject objectToMove = rayHit.collider.gameObject;
-                    if(Input.GetKeyDown(KeyCode.A))
-                        objectToMove.transform.Translate(-1,0,0);
+                    Debug.Log("grabbing the platform");
 
-                    if (Input.GetKeyDown(KeyCode.D))
-                        objectToMove.transform.Translate(1,0,0);
 
-                    //rayHit.collider.gameObject.transform.parent = transform;
-                    */
+                    objectToMove = rayHit.collider.gameObject;
 
-                    GameObject objectToMove = rayHit.collider.gameObject;
-                    //curMat = objectToMove.GetComponent<Material>();
-                    objectToMove.GetComponent<>() = grabMat.mainTexture;
-                    if(Input.GetKey(KeyCode.W))
-                    {
-                        objectToMove.transform.Translate(Vector3.forward * Time.deltaTime);
-                    }
+                    curMat = objectToMove.GetComponent<Renderer>().material;
+                    objectToMove.GetComponent<Renderer>().material = grabMat;
+
+                    // if (objectToMove.GetComponent<Renderer>().material == grabMat)
+                    grab = true;
 
                 }
-                
-                    
 
-                
+                if(grab)
+                    objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime, 0);
 
+
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    objectToMove.GetComponent<Renderer>().material = curMat;
+                    grab = false;
+                }
+                
+                if (Input.GetKeyDown(KeyCode.Mouse2))
+                {
+                    objectToMove.transform.Rotate(0, 0, 90);
+                }
 
             }
 
@@ -77,7 +81,7 @@ public class Grab : MonoBehaviour {
             {
                 //float savedDistance;
                 rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
-                rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+               
 
                 GameObject objectToMove = rayHit.collider.gameObject;
                 throwObj = rayHit.collider.gameObject;
@@ -89,7 +93,7 @@ public class Grab : MonoBehaviour {
                     
                     
                     rayHit.collider.gameObject.transform.parent = null;
-                    objectToMove.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * Force);
+                    objectToMove.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward* Force);
                     respawnObj();
 
                 }
