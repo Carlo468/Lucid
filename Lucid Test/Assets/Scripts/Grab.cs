@@ -18,9 +18,8 @@ public class Grab : MonoBehaviour {
     GameObject throwObj;
     Material curMat;
     public Material grabMat;
-    GameObject objectToMove;
+
     public int Force;
-    public float moveSpeed;
 
     //public Light light;
     // Use this for initialization
@@ -37,55 +36,41 @@ public class Grab : MonoBehaviour {
 
             if(rayHit.collider.gameObject.tag == "platformGrab")
             {
-                //rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
-                
+                rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
+                rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
 
                 
 
-                if (Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKey(KeyCode.Mouse1))
                 {
-                    
-                    Debug.Log("I'm saving the platform!");
-                    
+                    /*
+                    Debug.Log("I'm grabbing the object!");
+                    rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
+                    GameObject objectToMove = rayHit.collider.gameObject;
+                    if(Input.GetKeyDown(KeyCode.A))
+                        objectToMove.transform.Translate(-1,0,0);
 
-                    objectToMove = rayHit.collider.gameObject;
+                    if (Input.GetKeyDown(KeyCode.D))
+                        objectToMove.transform.Translate(1,0,0);
 
-                    objectToMove.GetComponent<Renderer>().material = grabMat;
+                    //rayHit.collider.gameObject.transform.parent = transform;
+                    */
 
-
-                   
-                    Debug.Log("x: " +Input.mouseScrollDelta.x);
-                    Debug.Log("y: " +Input.mouseScrollDelta.y);
-
-                    
-
+                    GameObject objectToMove = rayHit.collider.gameObject;
+                    //curMat = objectToMove.GetComponent<Material>();
+                    objectToMove.GetComponent<>() = grabMat.mainTexture;
+                    if(Input.GetKey(KeyCode.W))
+                    {
+                        objectToMove.transform.Translate(Vector3.forward * Time.deltaTime);
+                    }
 
                 }
+                
+                    
 
-
-               
-
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Debug.Log("detatching!");
-                    objectToMove.GetComponent<Renderer>().material = null;
-                    objectToMove = null;
-                }
-               
-                if(Input.GetKeyDown(KeyCode.Mouse2))
-                {
-                    Debug.Log("Rotating");
-                    objectToMove.transform.Rotate(0, 0, 90);
-                }
                 
 
 
-
-            }
-
-            if (objectToMove != null)
-            {
-                objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * moveSpeed * Time.deltaTime, 0);
             }
 
             if (rayHit.collider.gameObject.tag == "Grab")
