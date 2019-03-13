@@ -22,6 +22,7 @@ public class Grab : MonoBehaviour {
     bool grab = false;
 
     public int Force;
+    public int moveSpeed;
 
     //public Light light;
     // Use this for initialization
@@ -61,7 +62,7 @@ public class Grab : MonoBehaviour {
 
                 if (grab)
                 {
-                    objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime, 0);
+                    objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
                 }
 
 
