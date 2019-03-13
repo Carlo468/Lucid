@@ -18,6 +18,7 @@ TagManager:
   - ForestEnd
   - DesertDoor
   - FP
+  - killbox
   layers:
   - Default
   - TransparentFX

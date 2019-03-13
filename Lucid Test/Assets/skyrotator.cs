@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class skyRotator : MonoBehaviour
+public class skyrotator : MonoBehaviour
 {
 
     public float rotateSpeed = 1.2f;
