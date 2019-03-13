@@ -17,6 +17,7 @@ TagManager:
   - woodDoor
   - ForestEnd
   - DesertDoor
+  - FP
   layers:
   - Default
   - TransparentFX

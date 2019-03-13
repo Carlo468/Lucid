@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
                 forestLevel = true;
             }
 
-            if (rayHit.collider.gameObject.tag == "DesertDoor" && Player.numKeys == 5)
+            if (rayHit.collider.gameObject.tag == "DesertDoor" && Player.numKeys == 6)
             {
                 Debug.Log("I hit the Desert door!");
                 desertLevel = true;
