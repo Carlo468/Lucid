@@ -19,11 +19,11 @@ public class TitleScreen : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Nexus");
     }
 
-    void OnTutorialButton()
+    public void OnTutorialButton()
     {
-
+        SceneManager.LoadScene("Tutorial");
     }
 }

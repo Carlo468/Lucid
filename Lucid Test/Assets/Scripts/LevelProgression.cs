@@ -24,6 +24,11 @@ public class LevelProgression : MonoBehaviour
         {
             SceneManager.LoadScene("Nexus");
         }
-              
+
+        if (GameController.desertLevel == true)
+        {
+            SceneManager.LoadScene("Nexus");
+        }
+
     }
 }

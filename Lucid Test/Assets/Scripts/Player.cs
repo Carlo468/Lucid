@@ -8,13 +8,22 @@ public class Player : MonoBehaviour {
     
     public static int numKeys;
     GameObject a;
+    GameObject b;
     GameObject go;
     public GameObject img;
 
     void Awake()
     {
         go = GameObject.FindWithTag("end");
-        go.SetActive(false);
+        if(go!= null)
+            go.SetActive(false);
+
+        b = GameObject.FindWithTag("FP");
+        if (b != null)
+        {
+            Debug.Log("setting the platforms");
+            b.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,18 +52,26 @@ public class Player : MonoBehaviour {
         if(numKeys == 2)
         {
             a = GameObject.FindWithTag("WP");
-            Destroy(a);
+            if(a != null)
+                Destroy(a);
+            
+        if (b!= null)
+            {
+                b.SetActive(true);
+            }
+            
         }
         if (numKeys == 5)
         {
             a = GameObject.FindWithTag("final wall");
-            Destroy(a);
+            if (a != null)
+                Destroy(a);
         }
 
         if(numKeys == 6)
         {
-             
-            go.SetActive(true);
+            if(go != null)
+                go.SetActive(true);
             //img.SetActive(true);
         }
     }
