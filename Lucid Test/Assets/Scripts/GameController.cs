@@ -14,8 +14,11 @@ public class GameController : MonoBehaviour {
     public ParticleSystem ps;
     public static bool forestLevel = false;
     public static bool desertLevel = false;
-    void Start () {
+    public static bool spaceLevel = false;
 
+    Transform startPos;
+    void Start () {
+        startPos = transform;
 		
 	}
 	
@@ -44,8 +47,12 @@ public class GameController : MonoBehaviour {
                 }
 
             }
-            
-            if(rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
+
+            if (rayHit.collider.gameObject.tag == "killbox")
+            {
+                playerRespawn();
+            }
+                if (rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
             {
                 Debug.Log("I hit the wood door!");
                 forestLevel = true;
@@ -57,6 +64,10 @@ public class GameController : MonoBehaviour {
                 desertLevel = true;
             }
 
+            if (Player.numKeys == 1 && SceneManager.GetActiveScene().Equals("spaceLevel"))
+            {
+                spaceLevel = true;
+            }
         }
 
     }
@@ -73,5 +84,9 @@ public class GameController : MonoBehaviour {
     void spawnps(Transform position)
     {
         Instantiate(ps, position.position, position.rotation);
+    }
+    void playerRespawn()
+    {
+        transform.Translate(startPos.transform.position);
     }
 }
