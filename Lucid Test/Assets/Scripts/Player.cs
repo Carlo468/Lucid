@@ -26,7 +26,12 @@ public class Player : MonoBehaviour
             Debug.Log("setting the platforms");
             b.SetActive(false);
         }
-
+        a = GameObject.FindWithTag("WP");
+        if (a != null)
+        {
+            Debug.Log("setting the walls");
+            //b.SetActive(false);
+        }
         /*
         if (instance == null)
         {
@@ -75,6 +80,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("spacelevel");
 
+
             if (coll.gameObject.tag == "SpaceDoor")
             {
                 SceneManager.LoadScene("spaceLevel");
@@ -83,41 +89,65 @@ public class Player : MonoBehaviour
         }
 
 
-
-
-
-
-        void Update()
+        if (coll.gameObject.tag == "SpaceDoor")
         {
-            if (numKeys == 2)
-            {
-                a = GameObject.FindWithTag("WP");
-                if (a != null)
-                    Destroy(a);
-
-                if (b != null)
-                {
-                    b.SetActive(true);
-                }
-
-            }
-            if (numKeys == 5)
-            {
-                a = GameObject.FindWithTag("final wall");
-                if (a != null)
-                    Destroy(a);
-            }
-
-            if (numKeys == 6)
-            {
-                if (go != null)
-                    go.SetActive(true);
-                //img.SetActive(true);
-            }
+            SceneManager.LoadScene("spaceLevel");
 
         }
     }
+
+
+
+
+
+
+
+
+    void Update()
+    {
+        if (numKeys == 2)
+        {
+            a = GameObject.FindWithTag("WP");
+            if (a != null)
+
+                Destroy(a);
+
+            if (b != null)
+            {
+                b.SetActive(true);
+            }
+
+
+            a.SetActive(false);
+            //Destroy(a);
+
+            if (b != null)
+            {
+                b.SetActive(true);
+            }
+
+
+        }
+        if (numKeys == 5)
+        {
+            a = GameObject.FindWithTag("final wall");
+            if (a != null)
+                Destroy(a);
+        }
+
+        if (numKeys == 6)
+        {
+            if (go != null)
+                go.SetActive(true);
+            //img.SetActive(true);
+        }
+
+    }
+
 }
+
+
+
 
    
 
