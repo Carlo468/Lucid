@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "key")
         {
 
-            //numKeys++;
+
             // spawnps(collision.transform);
             Destroy(collision.gameObject);
         }
@@ -67,56 +67,58 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Desert");
         }
-<<<<<<< HEAD
+
 
         //this brings the player to the space level
         print("I hit (collided with)" + coll.gameObject.name);
         if (coll.gameObject.tag == "Spacedoor")
         {
             SceneManager.LoadScene("spacelevel");
-=======
-        if (coll.gameObject.tag == "SpaceDoor")
-        {
-            SceneManager.LoadScene("spaceLevel");
->>>>>>> 8c1dbc0c72acf75c877ec2b99d104ed097f25dce
-        }
-    }
 
-
-
-
-
-
-    void Update()
-    {
-        if (numKeys == 2)
-        {
-            a = GameObject.FindWithTag("WP");
-            if (a != null)
-                Destroy(a);
-
-            if (b != null)
+            if (coll.gameObject.tag == "SpaceDoor")
             {
-                b.SetActive(true);
+                SceneManager.LoadScene("spaceLevel");
+
+            }
+        }
+
+
+
+
+
+
+        void Update()
+        {
+            if (numKeys == 2)
+            {
+                a = GameObject.FindWithTag("WP");
+                if (a != null)
+                    Destroy(a);
+
+                if (b != null)
+                {
+                    b.SetActive(true);
+                }
+
+            }
+            if (numKeys == 5)
+            {
+                a = GameObject.FindWithTag("final wall");
+                if (a != null)
+                    Destroy(a);
+            }
+
+            if (numKeys == 6)
+            {
+                if (go != null)
+                    go.SetActive(true);
+                //img.SetActive(true);
             }
 
         }
-        if (numKeys == 5)
-        {
-            a = GameObject.FindWithTag("final wall");
-            if (a != null)
-                Destroy(a);
-        }
-
-        if (numKeys == 6)
-        {
-            if (go != null)
-                go.SetActive(true);
-            //img.SetActive(true);
-        }
-
     }
 }
+
    
 
 
