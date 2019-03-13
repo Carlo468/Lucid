@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       focusDistance: 7
-      aperture: 6
+      aperture: 8.2
       focalLength: 164
       useCameraFov: 0
       kernelSize: 1
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 5
+        intensity: 2
         threshold: 1.1
         softKnee: 0.678
         radius: 7
