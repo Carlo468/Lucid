@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
             b.SetActive(false);
         }
 
+        /*
         if (instance == null)
         {
             instance = this;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        */
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "key")
         {
 
-            numKeys++;
+            //numKeys++;
             // spawnps(collision.transform);
             Destroy(collision.gameObject);
         }
@@ -65,12 +67,18 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Desert");
         }
+<<<<<<< HEAD
 
         //this brings the player to the space level
         print("I hit (collided with)" + coll.gameObject.name);
         if (coll.gameObject.tag == "Spacedoor")
         {
             SceneManager.LoadScene("spacelevel");
+=======
+        if (coll.gameObject.tag == "SpaceDoor")
+        {
+            SceneManager.LoadScene("spaceLevel");
+>>>>>>> 8c1dbc0c72acf75c877ec2b99d104ed097f25dce
         }
     }
 
