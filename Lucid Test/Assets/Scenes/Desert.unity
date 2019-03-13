@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.7407074, g: 0.664919, b: 0.58805573, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3012,6 +3012,38 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300022, guid: 48dc4c6cddf48a943bf7251f1ba06c05, type: 3}
+--- !u!1 &746660038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3036719079426296819, guid: 9f80ffbc26d0c1041b83171af6092714,
+    type: 3}
+  m_PrefabInstance: {fileID: 1219720194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &746660040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746660038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ed905304be4ba48aa98d048ced3424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 1.2
+--- !u!114 &746660047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746660038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: ae6891cefb2144a4c97100a7501ae63f, type: 2}
 --- !u!1001 &747255298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5407,10 +5439,17 @@ PrefabInstance:
       propertyPath: objThrowPos
       value: 
       objectReference: {fileID: 1482179132}
+<<<<<<< HEAD
     - target: {fileID: 3148346808353939311, guid: 9f80ffbc26d0c1041b83171af6092714,
         type: 3}
       propertyPath: moveSpeed
       value: 2
+=======
+    - target: {fileID: 3036719079419772433, guid: 9f80ffbc26d0c1041b83171af6092714,
+        type: 3}
+      propertyPath: m_WalkSpeed
+      value: 10
+>>>>>>> a3e3d1e476c741d39b7124c3186d1adedbc2251a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f80ffbc26d0c1041b83171af6092714, type: 3}
