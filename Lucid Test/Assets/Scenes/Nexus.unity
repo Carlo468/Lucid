@@ -16650,7 +16650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbca5048bdfbd7242840ee463961183c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1287732819}
+  img: {fileID: 0}
 --- !u!1001 &1325091125
 PrefabInstance:
   m_ObjectHideFlags: 0
