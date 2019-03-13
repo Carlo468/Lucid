@@ -59,8 +59,10 @@ public class Grab : MonoBehaviour {
 
                 }
 
-                if(grab)
+                if (grab)
+                {
                     objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime, 0);
+                }
 
 
 
