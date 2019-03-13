@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
 
     public static int numKeys;
+    public static Player instance;
     GameObject a;
     GameObject b;
     GameObject go;
@@ -24,6 +25,16 @@ public class Player : MonoBehaviour
         {
             Debug.Log("setting the platforms");
             b.SetActive(false);
+        }
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
     }
 
