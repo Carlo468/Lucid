@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 
     public ParticleSystem ps;
     public static bool forestLevel = false;
+    public static bool desertLevel = false;
     void Start () {
 
 		
@@ -50,7 +51,12 @@ public class GameController : MonoBehaviour {
                 forestLevel = true;
             }
 
-           
+            if (rayHit.collider.gameObject.tag == "DesertDoor" && Player.numKeys == 5)
+            {
+                Debug.Log("I hit the Desert door!");
+                desertLevel = true;
+            }
+
         }
 
     }
