@@ -65,6 +65,13 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Desert");
         }
+
+        //this brings the player to the space level
+        print("I hit (collided with)" + coll.gameObject.name);
+        if (coll.gameObject.tag == "Spacedoor")
+        {
+            SceneManager.LoadScene("spacelevel");
+        }
     }
 
 
