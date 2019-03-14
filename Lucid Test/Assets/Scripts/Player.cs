@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     GameObject a;
     GameObject b;
     GameObject go;
+    Transform startPos;
     public GameObject img;
 
     void Awake()
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
             Debug.Log("setting the walls");
             //b.SetActive(false);
         }
+        startPos = transform;
         /*
         if (instance == null)
         {
@@ -66,6 +68,11 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("forestLevel");
         }
 
+        if (coll.gameObject.tag == "killbox")
+        {
+            Debug.Log("respawning");
+            playerRespawn();
+        }
         //this brings the player to the desert level
         print("I hit (collided with)" + coll.gameObject.name);
         if (coll.gameObject.tag == "DesertDoor")
@@ -128,6 +135,11 @@ public class Player : MonoBehaviour
 
 
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         if (numKeys == 5)
         {
             a = GameObject.FindWithTag("final wall");
@@ -142,6 +154,14 @@ public class Player : MonoBehaviour
             //img.SetActive(true);
         }
 
+    }
+
+    void playerRespawn()
+    {
+
+        gameObject.SetActive(false);
+        transform.Translate(startPos.transform.position);
+        gameObject.SetActive(true);
     }
 
 }

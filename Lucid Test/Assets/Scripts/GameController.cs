@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour {
 
             if (rayHit.collider.gameObject.tag == "killbox")
             {
+                Debug.Log("respawning");
                 playerRespawn();
             }
                 if (rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
@@ -87,6 +88,9 @@ public class GameController : MonoBehaviour {
     }
     void playerRespawn()
     {
+        
+        gameObject.SetActive(false);
         transform.Translate(startPos.transform.position);
+        gameObject.SetActive(true);
     }
 }
