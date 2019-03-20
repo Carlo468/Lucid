@@ -55,6 +55,12 @@ public class Grab : MonoBehaviour {
                 
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
+                    if (grab)
+                    {
+                        objectToMove.GetComponent<Renderer>().material = curMat;
+                        objectToMove = null;
+                        grab = false;
+                    }
                     Debug.Log("grabbing the platform");
 
 
@@ -165,7 +171,6 @@ public class Grab : MonoBehaviour {
         Debug.Log(SceneManager.GetActiveScene().name);
         if (Player.numKeys == 7 && SceneManager.GetActiveScene().name.Equals("Tutorial"))
         {
-
             tutorialLevel = true;
         }
     }
