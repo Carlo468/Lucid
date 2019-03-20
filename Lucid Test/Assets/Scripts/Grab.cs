@@ -168,7 +168,7 @@ public class Grab : MonoBehaviour {
         {
             spaceLevel = true;
         }
-        Debug.Log(SceneManager.GetActiveScene().name);
+        //Debug.Log(SceneManager.GetActiveScene().name);
         if (Player.numKeys == 7 && SceneManager.GetActiveScene().name.Equals("Tutorial"))
         {
             tutorialLevel = true;
