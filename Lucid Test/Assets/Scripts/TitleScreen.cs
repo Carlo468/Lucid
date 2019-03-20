@@ -26,4 +26,8 @@ public class TitleScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
+    public void OnQuitButton()
+    {
+        Application.Quit(0);
+    }
 }

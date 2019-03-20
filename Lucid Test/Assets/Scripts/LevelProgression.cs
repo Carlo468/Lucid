@@ -14,21 +14,25 @@ public class LevelProgression : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player.numKeys == 7)
+        if(Grab.tutorialLevel)
         {
             Debug.Log("Seven keys have been met, traveling to nexus");
             SceneManager.LoadScene("Nexus");
         }
 
-        if (GameController.forestLevel == true)
+        if (Grab.forestLevel == true)
         {
             SceneManager.LoadScene("Nexus");
         }
 
-        if (GameController.desertLevel == true)
+        if (Grab.desertLevel == true)
         {
             SceneManager.LoadScene("Nexus");
         }
+        if(Grab.spaceLevel == true)
+        {
+            SceneManager.LoadScene("Nexus");
 
+        }
     }
 }
