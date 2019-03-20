@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     Transform startPos;
     public GameObject img;
 
+
     void Awake()
     {
         go = GameObject.FindWithTag("end");

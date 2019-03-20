@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Grab : MonoBehaviour {
 
@@ -26,14 +26,25 @@ public class Grab : MonoBehaviour {
 
     //public Light light;
     // Use this for initialization
+
+    public ParticleSystem ps;
+    public static bool tutorialLevel = false;
+    public static bool forestLevel = false;
+    public static bool desertLevel = false;
+    public static bool spaceLevel = false;
+    public Transform startPos;
+    //public ParticleSystem ps;
     void Start () {
-		
-	}
+        startPos = transform;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (grab)
+        {
+            objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
+        }
 
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
@@ -42,9 +53,6 @@ public class Grab : MonoBehaviour {
             {
                 rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
                 
-
-                
-
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     Debug.Log("grabbing the platform");
@@ -60,13 +68,6 @@ public class Grab : MonoBehaviour {
 
                 }
 
-                if (grab)
-                {
-                    objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
-                }
-
-
-
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     objectToMove.GetComponent<Renderer>().material = curMat;
@@ -79,6 +80,8 @@ public class Grab : MonoBehaviour {
                 }
 
             }
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+           
 
             if (rayHit.collider.gameObject.tag == "Grab")
             {
@@ -117,7 +120,53 @@ public class Grab : MonoBehaviour {
                     rayHit.collider.gameObject.transform.parent = null;
                 }
 
+
                 }
+
+            print("I hit " + rayHit.collider.gameObject.name);
+
+            if (rayHit.collider.gameObject.tag == "key")
+            {
+                Debug.Log("Im looking at the key");
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Player.numKeys++;
+                    print("I have " + Player.numKeys + "keys");
+                    spawnps(rayHit.collider.gameObject.transform);
+                    Destroy(rayHit.collider.gameObject);
+                }
+
+            }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            if (rayHit.collider.gameObject.tag == "killbox")
+            {
+                Debug.Log("respawning");
+                playerRespawn();
+            }
+            if (rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
+            {
+                Debug.Log("I hit the wood door!");
+                forestLevel = true;
+            }
+
+            if (rayHit.collider.gameObject.tag == "DesertDoor" && Player.numKeys == 6)
+            {
+                Debug.Log("I hit the Desert door!");
+                desertLevel = true;
+            }
+
+           
+    }
+
+        if (Player.numKeys == 1 && SceneManager.GetActiveScene().name.Equals("spaceLevel"))
+        {
+            spaceLevel = true;
+        }
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (Player.numKeys == 7 && SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        {
+
+            tutorialLevel = true;
         }
     }
 
@@ -125,5 +174,17 @@ public class Grab : MonoBehaviour {
     void respawnObj()
     {
         Instantiate(throwObj, objThrowPos.transform.transform.position, objThrowPos.transform.rotation);
+    }
+
+    void playerRespawn()
+    {
+
+        gameObject.SetActive(false);
+        transform.Translate(startPos.transform.position);
+        gameObject.SetActive(true);
+    }
+    void spawnps(Transform position)
+    {
+        Instantiate(ps, position.position, position.rotation);
     }
 }
