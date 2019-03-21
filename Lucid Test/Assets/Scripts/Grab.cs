@@ -43,8 +43,27 @@ public class Grab : MonoBehaviour {
     {
         if (grab)
         {
+            //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY| RigidbodyConstraints.FreezePositionZ;
+
             objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
+            /*
+            if (Input.GetKey(KeyCode.W))
+                objectToMove.transform.Translate(0, 1 * Time.deltaTime * moveSpeed, 0);
+            if (Input.GetKey(KeyCode.S))
+                objectToMove.transform.Translate(0, -1 * Time.deltaTime * moveSpeed, 0);
+            if (Input.GetKey(KeyCode.A))
+                objectToMove.transform.Translate(-1 * Time.deltaTime * moveSpeed, 0, 0);
+            if (Input.GetKey(KeyCode.D))
+                objectToMove.transform.Translate( 1 * Time.deltaTime * moveSpeed, 0 , 0);
+                */
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            objectToMove.GetComponent<Renderer>().material = curMat;
+            grab = false;
+        }
+
 
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
