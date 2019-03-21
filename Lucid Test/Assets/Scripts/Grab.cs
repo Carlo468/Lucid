@@ -97,6 +97,8 @@ public class Grab : MonoBehaviour {
 
                 GameObject objectToMove = rayHit.collider.gameObject;
                 throwObj = rayHit.collider.gameObject;
+                Debug.Log("Turning the color");
+                throwObj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f,1.0f, 1.0f);
                 //objPos = rayHit.collider.gameObject.transform;
 
                 if (objectToMove.transform.parent != null && Input.GetKeyDown(KeyCode.Mouse2))

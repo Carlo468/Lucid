@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
             //b.SetActive(false);
         }
         startPos = transform;
+
+        
+
         /*
         if (instance == null)
         {
