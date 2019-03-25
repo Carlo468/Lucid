@@ -45,17 +45,17 @@ public class Grab : MonoBehaviour {
         {
             //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY| RigidbodyConstraints.FreezePositionZ;
 
-            objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
-            /*
-            if (Input.GetKey(KeyCode.W))
+            //objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
+            
+            if (Input.GetKey(KeyCode.I))
                 objectToMove.transform.Translate(0, 1 * Time.deltaTime * moveSpeed, 0);
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.K))
                 objectToMove.transform.Translate(0, -1 * Time.deltaTime * moveSpeed, 0);
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.J))
                 objectToMove.transform.Translate(-1 * Time.deltaTime * moveSpeed, 0, 0);
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.L))
                 objectToMove.transform.Translate( 1 * Time.deltaTime * moveSpeed, 0 , 0);
-                */
+                
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -105,9 +105,9 @@ public class Grab : MonoBehaviour {
                 }
 
             }
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-           
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            #region throwableCubeMechanic
             if (rayHit.collider.gameObject.tag == "Grab")
             {
                 //float savedDistance;
@@ -149,6 +149,7 @@ public class Grab : MonoBehaviour {
 
 
                 }
+            #endregion
 
             print("I hit " + rayHit.collider.gameObject.name);
 

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelProgression : MonoBehaviour
 {
+    public static bool level1;
+    public static bool level2;
+    public static bool level3;
+    public static bool level4;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +18,12 @@ public class LevelProgression : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Grab.tutorialLevel)
+        if(Grab.tutorialLevel && level1 == false)
         {
             Debug.Log("Seven keys have been met, traveling to nexus");
             SceneManager.LoadScene("Nexus");
             Grab.tutorialLevel = false;
+            level1 = true;
         }
 
         Debug.Log("forestLevel" + Grab.forestLevel);
@@ -26,20 +31,23 @@ public class LevelProgression : MonoBehaviour
         Debug.Log("desertLevel" + Grab.desertLevel);
         Debug.Log("spaceLevel" + Grab.forestLevel);
 
-        if (Grab.forestLevel == true)
+        if (Grab.forestLevel == true && level2 == false)
         {
             SceneManager.LoadScene("Nexus");
+            level2 = true;
         }
 
-        if (Grab.desertLevel == true)
+        if (Grab.desertLevel == true && level3 == false)
         {
             SceneManager.LoadScene("Nexus");
-            Grab.desertLevel = false;
+            
+            level3 = true;
         }
-        if(Grab.spaceLevel == true)
+        if(Grab.spaceLevel == true && level4 == false)
         {
             SceneManager.LoadScene("Nexus");
-            Grab.forestLevel = false;
+            
+            level4 = true;
         }
     }
 }
