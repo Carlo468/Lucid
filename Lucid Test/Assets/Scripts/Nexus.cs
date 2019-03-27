@@ -11,8 +11,8 @@ public class Nexus : MonoBehaviour
     void Start()
     {
         woodDoor = GameObject.FindWithTag("woodDoor");
-        desertDoor = GameObject.FindWithTag("desertDoor");
-        spaceDoor = GameObject.FindWithTag("spaceDoor");
+        desertDoor = GameObject.FindWithTag("DesertDoor");
+        spaceDoor = GameObject.FindWithTag("Spacedoor");
     }
 
     // Update is called once per frame

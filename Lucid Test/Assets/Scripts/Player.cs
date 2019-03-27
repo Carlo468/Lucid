@@ -100,11 +100,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (coll.gameObject.tag == "SpaceDoor")
-        {
-            SceneManager.LoadScene("spaceLevel");
-
-        }
+        
     }
 
 
