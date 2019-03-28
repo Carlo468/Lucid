@@ -5077,7 +5077,7 @@ PrefabInstance:
     - target: {fileID: 4026098316926355551, guid: 58eec1a016661bf43ac8f291cffe9a5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4026098316926355551, guid: 58eec1a016661bf43ac8f291cffe9a5c,
         type: 3}
@@ -5123,66 +5123,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_AreaSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_AreaSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.46626154
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_Range
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026098316926355546, guid: 58eec1a016661bf43ac8f291cffe9a5c,
-        type: 3}
-      propertyPath: m_BounceIntensity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58eec1a016661bf43ac8f291cffe9a5c, type: 3}
