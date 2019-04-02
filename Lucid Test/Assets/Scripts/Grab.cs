@@ -33,6 +33,7 @@ public class Grab : MonoBehaviour {
     public static bool desertLevel = false;
     public static bool spaceLevel = false;
     public Transform startPos;
+    Behaviour halo;
     //public ParticleSystem ps;
     void Start () {
         startPos = transform;
@@ -64,14 +65,19 @@ public class Grab : MonoBehaviour {
             grab = false;
         }
 
-
+        
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
-
-            if(rayHit.collider.gameObject.tag == "platformGrab")
+            #region PlatformManipulationMechanic
+            if (rayHit.collider.gameObject.tag == "platformGrab")
             {
                 rayHit.collider.gameObject.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
-                
+
+                //Highlight it!
+                halo = (Behaviour)rayHit.collider.gameObject.GetComponent("Halo");
+                halo.enabled = true;
+
+
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     if (grab)
@@ -87,6 +93,9 @@ public class Grab : MonoBehaviour {
 
                     curMat = objectToMove.GetComponent<Renderer>().material;
                     objectToMove.GetComponent<Renderer>().material = grabMat;
+                    objectToMove.GetComponent<Light>().intensity = 44;
+
+                    
 
                     // if (objectToMove.GetComponent<Renderer>().material == grabMat)
                     grab = true;
@@ -103,8 +112,16 @@ public class Grab : MonoBehaviour {
                 {
                     objectToMove.transform.Rotate(0, 0, 90);
                 }
-
+                
             }
+
+            if(!(rayHit.collider.gameObject.tag == "platformGrab"))
+            {
+                halo.enabled = false;
+            }
+
+
+            #endregion
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             #region throwableCubeMechanic

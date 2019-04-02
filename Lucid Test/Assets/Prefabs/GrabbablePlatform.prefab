@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4026098316926355544}
   - component: {fileID: 4026098316926355547}
   - component: {fileID: 4026098316926355546}
+  - component: {fileID: 761750833}
   m_Layer: 0
   m_Name: GrabbablePlatform
   m_TagString: platformGrab
@@ -116,16 +117,16 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4026098316926355493}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0, g: 0.9419036, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.04843235, a: 1}
   m_Intensity: 44
-  m_Range: 5.7047377
-  m_SpotAngle: 30
+  m_Range: 3
+  m_SpotAngle: 85
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -147,3 +148,15 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!122 &761750833
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026098316926355493}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: -3.1
