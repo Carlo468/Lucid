@@ -93,7 +93,7 @@ public class Grab : MonoBehaviour {
 
                     curMat = objectToMove.GetComponent<Renderer>().material;
                     objectToMove.GetComponent<Renderer>().material = grabMat;
-                    objectToMove.GetComponent<Light>().intensity = 44;
+                    //objectToMove.GetComponent<Light>().intensity = 44;
 
                     
 
@@ -115,7 +115,7 @@ public class Grab : MonoBehaviour {
                 
             }
 
-            if(!(rayHit.collider.gameObject.tag == "platformGrab"))
+            if(!(rayHit.collider.gameObject.tag == "platformGrab") && rayHit.collider.gameObject != null)
             {
                 halo.enabled = false;
             }

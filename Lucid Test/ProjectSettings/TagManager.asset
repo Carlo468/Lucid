@@ -20,6 +20,7 @@ TagManager:
   - FP
   - killbox
   - Spacedoor
+  - hitBox
   layers:
   - Default
   - TransparentFX

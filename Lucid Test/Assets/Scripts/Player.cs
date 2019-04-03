@@ -51,19 +51,14 @@ public class Player : MonoBehaviour
         */
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        print("I hit (collided with)" + collision.gameObject.name);
-        if (collision.gameObject.tag == "key")
-        {
+        print("I hit (collided with)" + hit.gameObject.name);
+        Rigidbody body = hit.collider.attachedRigidbody;
 
-
-            // spawnps(collision.transform);
-            Destroy(collision.gameObject);
-        }
     }
-
-    private void OnTriggerEnter(Collider coll)
+        private void OnTriggerEnter(Collider coll)
     {
         //bring the player to the forest level
         print("I hit (collided with)" + coll.gameObject.name);
