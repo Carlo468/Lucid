@@ -24,7 +24,7 @@ public class platformScript : MonoBehaviour
         if (hasCollided)
         {
 
-            playerPrefab.transform.position = transform.position;
+            //playerPrefab.transform.position = transform.position;
 
         }
         
@@ -37,7 +37,7 @@ public class platformScript : MonoBehaviour
         {
             print("The player hit me!");
             hasCollided = true;
-            //playerPrefab.transform.parent = theParent.transform;
+            playerPrefab.transform.parent = theParent.transform;
             //playerPrefab.transform.localScale = scale;
             
             //coll.gameObject.transform.parent = transform.parent;
@@ -51,7 +51,7 @@ public class platformScript : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             hasCollided = false;
-            theParent.transform.parent = null;
+            playerPrefab.transform.parent = null;
         }
     }
 }
