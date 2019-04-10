@@ -118,7 +118,7 @@ public class Grab : MonoBehaviour {
                 
             }
 
-            if(!(rayHit.collider.gameObject.tag == "platformGrab") && rayHit.collider.gameObject != null)
+            if((!(rayHit.collider.gameObject.tag == "platformGrab")) && rayHit.collider.gameObject != null && halo != null)
             {
                 halo.enabled = false;
             }
