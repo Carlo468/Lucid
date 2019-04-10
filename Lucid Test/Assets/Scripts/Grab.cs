@@ -91,14 +91,19 @@ public class Grab : MonoBehaviour {
                     Debug.Log("grabbing the platform");
 
 
-                    objectToMove = rayHit.collider.gameObject.transform.parent.gameObject;
+                    //objectToMove = rayHit.collider.gameObject.transform.parent.gameObject;
+                    objectToMove = rayHit.collider.gameObject;
 
-                    curMat = objectToMove.transform.GetChild(0).GetComponent<Renderer>().material;
-                    print( "Child: " +objectToMove.transform.GetChild(0).gameObject.name);
-                    objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = grabMat;
+
+                    //curMat = objectToMove.transform.GetChild(0).GetComponent<Renderer>().material;
+                    curMat = objectToMove.GetComponent<Renderer>().material;
+                    //print( "Child: " +objectToMove.transform.GetChild(0).gameObject.name);
+
+                    //objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = grabMat;
+                    objectToMove.GetComponent<Renderer>().material = grabMat;
                     //objectToMove.GetComponent<Light>().intensity = 44;
 
-                    
+
 
                     // if (objectToMove.GetComponent<Renderer>().material == grabMat)
                     grab = true;
@@ -107,7 +112,10 @@ public class Grab : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
+
+                    //objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
+                    objectToMove.GetComponent<Renderer>().material = curMat;
+
                     grab = false;
                 }
                 
