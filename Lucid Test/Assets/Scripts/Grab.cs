@@ -59,7 +59,7 @@ public class Grab : MonoBehaviour {
                 
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && objectToMove != null)
         {
             objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
             grab = false;
