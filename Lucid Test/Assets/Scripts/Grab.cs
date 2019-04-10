@@ -61,7 +61,7 @@ public class Grab : MonoBehaviour {
                 
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && objectToMove != null)
         {
             objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
             grab = false;
@@ -118,7 +118,7 @@ public class Grab : MonoBehaviour {
                 
             }
 
-            if(!(rayHit.collider.gameObject.tag == "platformGrab") && rayHit.collider.gameObject != null)
+            if((!(rayHit.collider.gameObject.tag == "platformGrab")) && rayHit.collider.gameObject != null && halo != null)
             {
                 halo.enabled = false;
             }
