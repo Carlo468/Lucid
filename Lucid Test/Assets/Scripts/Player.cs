@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     GameObject a;
     GameObject b;
     GameObject go;
+    GameObject kb;
     Transform startPos;
     public GameObject img;
 
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
         }
         startPos = transform;
 
-        
+        kb = GameObject.FindWithTag("killbox");
 
         /*
         if (instance == null)
@@ -57,24 +58,47 @@ public class Player : MonoBehaviour
         print("I hit (collided with)" + hit.gameObject.name);
         Rigidbody body = hit.collider.attachedRigidbody;
 
+        if (hit.gameObject.tag == "killbox")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+    }
+    void OnCollisionEnter(Collision coll)
+    {
+        print("I hit (collided with)" + coll.gameObject.name);
+        if(coll.gameObject.tag == "woodDoor" || coll.gameObject.tag == "DesertDoor" || coll.gameObject.tag == "Spacedoor")
+        {
+            print("KILLBOX DISABLED");
+            kb.SetActive(false);
+        }
+        if (coll.gameObject.tag == "killbox" && SceneManager.GetActiveScene().name == "Nexus")
+        {
+            print("Im in nexus and hit the killbox");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+
     }
         private void OnTriggerEnter(Collider coll)
     {
         //bring the player to the forest level
         print("I hit (collided with)" + coll.gameObject.name);
-        if (coll.gameObject.tag == "woodDoor")
-        {
-            SceneManager.LoadScene("forestLevel");
-        }
-
         if (coll.gameObject.tag == "killbox")
         {
             Debug.Log("respawning");
             playerRespawn();
         }
+        
+        if (coll.gameObject.tag == "woodDoor" && SceneManager.GetActiveScene().name == "Nexus")
+        {
+            SceneManager.LoadScene("forestLevel");
+        }
+
+       
         //this brings the player to the desert level
         print("I hit (collided with)" + coll.gameObject.name);
-        if (coll.gameObject.tag == "DesertDoor")
+        if (coll.gameObject.tag == "DesertDoor" && SceneManager.GetActiveScene().name == "Nexus")
         {
             SceneManager.LoadScene("Desert");
         }
@@ -82,7 +106,7 @@ public class Player : MonoBehaviour
 
         //this brings the player to the space level
         print("I hit (collided with)" + coll.gameObject.name);
-        if (coll.gameObject.tag == "Spacedoor")
+        if (coll.gameObject.tag == "Spacedoor" && SceneManager.GetActiveScene().name == "Nexus")
         {
             SceneManager.LoadScene("spacelevel");
 
@@ -93,9 +117,9 @@ public class Player : MonoBehaviour
 
             }
         }
-
-
         
+
+
     }
 
 

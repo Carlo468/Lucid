@@ -42,6 +42,10 @@ public class LevelProgression : MonoBehaviour
             SceneManager.LoadScene("Nexus");
             
             level3 = true;
+            if (!level2)
+            {
+                level2 = true;
+            }
         }
         if(Grab.spaceLevel == true && level4 == false)
         {

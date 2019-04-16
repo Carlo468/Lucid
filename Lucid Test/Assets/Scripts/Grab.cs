@@ -18,8 +18,12 @@ public class Grab : MonoBehaviour {
 
     public Transform objThrowPos;
     GameObject throwObj;
+
     Material curMat;
+    Material cubeCurMat;
     public Material grabMat;
+    public Material transparentMaterial;
+
     GameObject objectToMove;
     bool grab = false;
 
@@ -60,6 +64,9 @@ public class Grab : MonoBehaviour {
                 objectToMove.transform.Translate( 1 * Time.deltaTime * moveSpeed, 0 , 0);
                 
         }
+        ///////////////////test!///////////////////////////////////////////////
+        
+        //////////////////////////////////////////////////////////////////////
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && objectToMove != null)
         {
@@ -144,9 +151,11 @@ public class Grab : MonoBehaviour {
                
 
                 GameObject objectToMove = rayHit.collider.gameObject;
+                
+
                 throwObj = rayHit.collider.gameObject;
-                Debug.Log("Turning the color");
-                throwObj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f,1.0f, 1.0f);
+                
+                
                 //objPos = rayHit.collider.gameObject.transform;
 
                 if (objectToMove.transform.parent != null && Input.GetKeyDown(KeyCode.Mouse2))
@@ -156,6 +165,8 @@ public class Grab : MonoBehaviour {
                     
                     rayHit.collider.gameObject.transform.parent = null;
                     objectToMove.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward* Force);
+                    Debug.Log("Turning the color");
+                    throwObj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     respawnObj();
 
                 }
@@ -166,8 +177,8 @@ public class Grab : MonoBehaviour {
                     Debug.Log("I'm grabbing the object!");
                     rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
                     rayHit.collider.gameObject.transform.parent = transform;
-                    
-                    
+                    objectToMove.gameObject.GetComponent<Renderer>().material = transparentMaterial;
+
                 }
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -195,12 +206,8 @@ public class Grab : MonoBehaviour {
 
             }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            if (rayHit.collider.gameObject.tag == "killbox")
-            {
-                Debug.Log("respawning");
-                playerRespawn();
-            }
-            if (rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 3)
+           
+            if (rayHit.collider.gameObject.tag == "woodDoor" && Player.numKeys == 4)
             {
                 Debug.Log("I hit the wood door!");
                 forestLevel = true;

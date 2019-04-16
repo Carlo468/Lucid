@@ -14,16 +14,22 @@ public class MouseCamLook : MonoBehaviour
     private Vector2 mouseLook;
     // smooth the mouse moving
     private Vector2 smoothV;
+    public Camera cam;
+    public GameObject FOVPos;
+    public GameObject parent;
 
     // Use this for initialization
     void Start()
     {
         character = this.transform.parent.gameObject;
+        //cam = gameObject.GetComponent<Camera>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //character.transform.position = gameObject.transform.position;
         // md is mosue delta
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -37,6 +43,19 @@ public class MouseCamLook : MonoBehaviour
         // vector3.right means the x-axis
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
-        //character.transform.localPosition = gameObject.transform.position;
+        character.transform.localPosition = gameObject.transform.position;
+
+        updateCamera();
+        //updateParent();
+    }
+
+    void updateCamera()
+    {
+        //cam = gameObject.GetComponent<Camera>();
+        cam.gameObject.transform.position = FOVPos.transform.position;
+    }
+    void updateParent()
+    {
+        //parent.gameObject.transform.position = gameObject.transform.position;
     }
 }

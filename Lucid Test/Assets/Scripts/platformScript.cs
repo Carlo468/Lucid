@@ -12,7 +12,7 @@ public class platformScript : MonoBehaviour
     void Start()
     {
         playerPrefab = GameObject.FindWithTag("Player");
-        scale = playerPrefab.transform.localScale;
+        //scale = playerPrefab.transform.localScale;
     }
 
     // Update is called once per frame
@@ -37,9 +37,9 @@ public class platformScript : MonoBehaviour
         {
             print("The player hit me!");
             hasCollided = true;
-            playerPrefab.transform.parent = theParent.transform;
+            //playerPrefab.transform.parent = theParent.transform;
             //playerPrefab.transform.localScale = scale;
-            
+            //coll.gameObject.transform.position = gameObject.transform.position;
             //coll.gameObject.transform.parent = transform.parent;
 
 
