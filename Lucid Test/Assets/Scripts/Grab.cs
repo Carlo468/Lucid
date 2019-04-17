@@ -40,6 +40,20 @@ public class Grab : MonoBehaviour {
     public static bool spaceLevel = false;
     public Transform startPos;
     Behaviour halo;
+    public AudioSource soundPlayer;
+
+    public AudioClip keySound;
+
+    [Range(0.0f, 1.0f)]
+    public float keyPickUpVolume;
+
+
+    //public AudioSource soundPlayer;
+    public AudioClip explosiveSound;
+
+    [Range(0.0f, 1.0f)]
+    public float explosiveVolume;
+
     //public ParticleSystem ps;
     void Start () {
         startPos = transform;
@@ -164,6 +178,10 @@ public class Grab : MonoBehaviour {
                     
                     
                     rayHit.collider.gameObject.transform.parent = null;
+
+                    spawnps(rayHit.collider.gameObject.transform);
+                    soundPlayer.PlayOneShot(explosiveSound, explosiveVolume);
+
                     objectToMove.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward* Force);
                     Debug.Log("Turning the color");
                     throwObj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -199,6 +217,8 @@ public class Grab : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     Player.numKeys++;
+                    soundPlayer.PlayOneShot(keySound, keyPickUpVolume);
+                    
                     print("I have " + Player.numKeys + "keys");
                     spawnps(rayHit.collider.gameObject.transform);
                     Destroy(rayHit.collider.gameObject);
