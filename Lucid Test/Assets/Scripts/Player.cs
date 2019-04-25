@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public static int numKeys;
     public static Player instance;
     GameObject a;
+    GameObject beginningWall;
+    GameObject secondWall;
     GameObject b;
     GameObject go;
     GameObject kb;
@@ -19,10 +21,15 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        beginningWall = GameObject.FindWithTag("BW");
+        secondWall = GameObject.FindWithTag("SW");
         go = GameObject.FindWithTag("end");
+        a = GameObject.FindWithTag("WP");
         if (go != null)
             go.SetActive(false);
 
+        
+            
         b = GameObject.FindWithTag("FP");
         if (b != null)
         {
@@ -131,9 +138,22 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (numKeys == 2)
+        if(numKeys == 1 && SceneManager.GetActiveScene().name == "Tutorial")
         {
-            a = GameObject.FindWithTag("WP");
+            print("Tutorial level part1 finished");
+            beginningWall.SetActive(false);
+        }
+        if (numKeys == 2 && (SceneManager.GetActiveScene().name == "Tutorial"))
+        {
+            secondWall.SetActive(false);
+        }
+        if (numKeys == 3 && (SceneManager.GetActiveScene().name == "Tutorial"))
+        {
+            a.SetActive(false);
+        }
+        if (numKeys == 2 && !(SceneManager.GetActiveScene().name == "Tutorial"))
+        {
+           
             if (a != null)
 
                 Destroy(a);

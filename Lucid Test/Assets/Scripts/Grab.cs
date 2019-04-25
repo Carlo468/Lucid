@@ -72,10 +72,12 @@ public class Grab : MonoBehaviour {
                 objectToMove.transform.Translate(0, 1 * Time.deltaTime * moveSpeed, 0);
             if (Input.GetKey(KeyCode.K))
                 objectToMove.transform.Translate(0, -1 * Time.deltaTime * moveSpeed, 0);
+           /*
             if (Input.GetKey(KeyCode.J))
                 objectToMove.transform.Translate(-1 * Time.deltaTime * moveSpeed, 0, 0);
             if (Input.GetKey(KeyCode.L))
                 objectToMove.transform.Translate( 1 * Time.deltaTime * moveSpeed, 0 , 0);
+                */
                 
         }
         ///////////////////test!///////////////////////////////////////////////
@@ -185,7 +187,7 @@ public class Grab : MonoBehaviour {
                     objectToMove.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward* Force);
                     Debug.Log("Turning the color");
                     throwObj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    respawnObj();
+                    //respawnObj();
 
                 }
 
@@ -193,11 +195,14 @@ public class Grab : MonoBehaviour {
                 {
                     
                     Debug.Log("I'm grabbing the object!");
+                    respawnObj();
                     rayHit.collider.gameObject.GetComponent<Light>().gameObject.SetActive(true);
                     rayHit.collider.gameObject.transform.parent = transform;
                     objectToMove.gameObject.GetComponent<Renderer>().material = transparentMaterial;
-
+                    
                 }
+
+                
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
@@ -231,12 +236,14 @@ public class Grab : MonoBehaviour {
             {
                 Debug.Log("I hit the wood door!");
                 forestLevel = true;
+                Player.numKeys = 0;
             }
 
             if (rayHit.collider.gameObject.tag == "DesertDoor" && Player.numKeys == 6)
             {
                 Debug.Log("I hit the Desert door!");
                 desertLevel = true;
+                Player.numKeys = 0;
             }
 
            

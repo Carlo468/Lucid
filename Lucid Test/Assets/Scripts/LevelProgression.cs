@@ -22,6 +22,7 @@ public class LevelProgression : MonoBehaviour
         {
             Debug.Log("Seven keys have been met, traveling to nexus");
             SceneManager.LoadScene("Nexus");
+            Player.numKeys = 0;
             Grab.tutorialLevel = false;
             level1 = true;
         }
