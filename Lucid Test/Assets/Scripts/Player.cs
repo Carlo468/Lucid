@@ -15,9 +15,15 @@ public class Player : MonoBehaviour
     GameObject b;
     GameObject go;
     GameObject kb;
+    //GameObject pauseMenu;
+
+    GameObject[] platforms;
+    GameObject[] temp;
+
     Transform startPos;
     public GameObject img;
 
+    
 
     void Awake()
     {
@@ -25,11 +31,21 @@ public class Player : MonoBehaviour
         secondWall = GameObject.FindWithTag("SW");
         go = GameObject.FindWithTag("end");
         a = GameObject.FindWithTag("WP");
+        platforms = GameObject.FindGameObjectsWithTag("platformGrab");
+        temp = platforms;
+        for(int i = 0; i<platforms.Length; i++)
+        {
+            
+        }
+        //pauseMenu = GameObject.FindWithTag("Pause");
+
         if (go != null)
             go.SetActive(false);
 
-        
-            
+       
+
+
+
         b = GameObject.FindWithTag("FP");
         if (b != null)
         {
@@ -135,7 +151,22 @@ public class Player : MonoBehaviour
 
 
 
+    public void OnResetButton()
+    {
+        /*
+        print("I hit the reset button!!!!!!");
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            platforms[i].SetActive(false);
+            platforms[i].transform.position = temp[i].transform.position;
+            platforms[i].SetActive(true);
+        }
+        */
 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+
+    }
     void Update()
     {
         if(numKeys == 1 && SceneManager.GetActiveScene().name == "Tutorial")
@@ -163,8 +194,8 @@ public class Player : MonoBehaviour
                 b.SetActive(true);
             }
 
-
-            a.SetActive(false);
+            if(a!= null)
+                a.SetActive(false);
             //Destroy(a);
 
             if (b != null)
@@ -179,6 +210,9 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        
+
         if (numKeys == 5)
         {
             a = GameObject.FindWithTag("final wall");

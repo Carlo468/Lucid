@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class CanvasText : MonoBehaviour
 {
-    Text numKeysText;
+    public Text numKeysText;
     int numKeysForScene;
     // Start is called before the first frame update
     void Start()
     {
-        numKeysText = GameObject.FindObjectOfType<Text>();
+        //numKeysText = GameObject.FindObjectOfType<Text>();
 
 
         if(SceneManager.GetActiveScene().name == "Tutorial")

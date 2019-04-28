@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class Grab : MonoBehaviour {
@@ -30,6 +31,7 @@ public class Grab : MonoBehaviour {
     public int Force;
     public int moveSpeed;
 
+
     //public Light light;
     // Use this for initialization
 
@@ -54,9 +56,12 @@ public class Grab : MonoBehaviour {
     [Range(0.0f, 1.0f)]
     public float explosiveVolume;
 
+    public Text help;
+
     //public ParticleSystem ps;
     void Start () {
         startPos = transform;
+        
     }
 
     // Update is called once per frame
@@ -68,9 +73,9 @@ public class Grab : MonoBehaviour {
 
             //objectToMove.transform.Translate(0, Input.mouseScrollDelta.y * Time.deltaTime * moveSpeed, 0);
             
-            if (Input.GetKey(KeyCode.I))
+            if (Input.GetKey(KeyCode.Q))
                 objectToMove.transform.Translate(0, 1 * Time.deltaTime * moveSpeed, 0);
-            if (Input.GetKey(KeyCode.K))
+            if (Input.GetKey(KeyCode.E))
                 objectToMove.transform.Translate(0, -1 * Time.deltaTime * moveSpeed, 0);
            /*
             if (Input.GetKey(KeyCode.J))
@@ -94,6 +99,14 @@ public class Grab : MonoBehaviour {
         
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, rayLength, layerMask))
         {
+            if (help != null)
+            {
+                if (rayHit.collider.gameObject.tag != "platformGrab" || rayHit.collider.gameObject.tag != "Grab" || rayHit.collider.gameObject.tag != "key")
+                {
+                    print("looking at nothing");
+                    help.text = "";
+                }
+            }
             #region PlatformManipulationMechanic
             if (rayHit.collider.gameObject.tag == "platformGrab")
             {
@@ -103,16 +116,25 @@ public class Grab : MonoBehaviour {
                 halo = (Behaviour)rayHit.collider.gameObject.GetComponent("Halo");
                 halo.enabled = true;
 
+                if(help != null)
+                {
+                    help.text = "Interactable platform: 'Q' moves the platform up. 'E' moves the platform down.";
+                }
 
-                if (Input.GetKeyDown(KeyCode.Mouse1))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     if (grab)
                     {
-                        objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
-                        objectToMove = null;
+                        //objectToMove.transform.GetChild(0).GetComponent<Renderer>().material = curMat;
+                        //objectToMove = null;
+                        //grab = false;
+                        objectToMove.GetComponent<Renderer>().material = curMat;
                         grab = false;
+                        return;
                     }
+                    
                     Debug.Log("grabbing the platform");
+
 
 
                     //objectToMove = rayHit.collider.gameObject.transform.parent.gameObject;
@@ -133,7 +155,7 @@ public class Grab : MonoBehaviour {
                     grab = true;
 
                 }
-
+                /*
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
 
@@ -142,15 +164,16 @@ public class Grab : MonoBehaviour {
 
                     grab = false;
                 }
-                
+                */
                 if (Input.GetKeyDown(KeyCode.Mouse2))
                 {
                     objectToMove.transform.Rotate(0, 0, 90);
                 }
                 
             }
+            //help.text = "";
 
-            if((!(rayHit.collider.gameObject.tag == "platformGrab")) && rayHit.collider.gameObject != null && halo != null)
+            if ((!(rayHit.collider.gameObject.tag == "platformGrab")) && rayHit.collider.gameObject != null && halo != null)
             {
                 halo.enabled = false;
             }
@@ -170,8 +193,11 @@ public class Grab : MonoBehaviour {
                 
 
                 throwObj = rayHit.collider.gameObject;
-                
-                
+
+                if (help != null)
+                {
+                    help.text = "Throw-able Cube: Right click to grab, Press down on the mouse scroll wheel to throw";
+                }
                 //objPos = rayHit.collider.gameObject.transform;
 
                 if (objectToMove.transform.parent != null && Input.GetKeyDown(KeyCode.Mouse2))
@@ -212,13 +238,20 @@ public class Grab : MonoBehaviour {
 
 
                 }
+
+            
             #endregion
+
 
             print("I hit " + rayHit.collider.gameObject.name);
 
             if (rayHit.collider.gameObject.tag == "key")
             {
                 Debug.Log("Im looking at the key");
+                if (help != null)
+                {
+                    help.text = "Key: Left click to grab";
+                }
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     Player.numKeys++;
