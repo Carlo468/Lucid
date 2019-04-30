@@ -21,6 +21,9 @@ TagManager:
   - killbox
   - Spacedoor
   - hitBox
+  - BW
+  - SW
+  - Pause
   layers:
   - Default
   - TransparentFX
