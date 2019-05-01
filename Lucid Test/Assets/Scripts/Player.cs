@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     GameObject b;
     GameObject go;
     GameObject kb;
+    GameObject [] spaceFinalDoors;
+    GameObject MC;
+    bool x;
+    public static bool endGame = false;
     //GameObject pauseMenu;
 
     GameObject[] platforms;
@@ -32,8 +36,19 @@ public class Player : MonoBehaviour
         go = GameObject.FindWithTag("end");
         a = GameObject.FindWithTag("WP");
         platforms = GameObject.FindGameObjectsWithTag("platformGrab");
+
+        spaceFinalDoors = GameObject.FindGameObjectsWithTag("spaceDoors");
+
+        if (SceneManager.GetActiveScene().name == "spaceLevel")
+        {
+            MC = GameObject.FindWithTag("otherCam");
+            MC.SetActive(false);
+        }
+        x = true;
+
         temp = platforms;
-        for(int i = 0; i<platforms.Length; i++)
+
+        for (int i = 0; i<platforms.Length; i++)
         {
             
         }
@@ -85,6 +100,16 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        if (hit.gameObject.tag == "Finish" && SceneManager.GetActiveScene().name == "spaceLevel")
+        {
+            print("endGame!");
+            endGame = true;
+
+           
+            MC.SetActive(true);
+            Destroy(gameObject);
+            
+        }
 
     }
     void OnCollisionEnter(Collision coll)
@@ -101,6 +126,7 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        
 
     }
         private void OnTriggerEnter(Collider coll)
@@ -182,7 +208,16 @@ public class Player : MonoBehaviour
         {
             a.SetActive(false);
         }
-        if (numKeys == 2 && !(SceneManager.GetActiveScene().name == "Tutorial"))
+        if (numKeys == 2 && (SceneManager.GetActiveScene().name == "spaceLevel") && x == true)
+        {
+            print("Open Sesame!");
+            for(int i = 0; i < spaceFinalDoors.Length; i++)
+            {
+                spaceFinalDoors[i].transform.Rotate(0, spaceFinalDoors[i].transform.rotation.y + 90f, 0);
+            }
+            x = false;
+        }
+            if (numKeys == 2 && !(SceneManager.GetActiveScene().name == "Tutorial"))
         {
            
             if (a != null)

@@ -24,6 +24,9 @@ TagManager:
   - BW
   - SW
   - Pause
+  - spaceDoors
+  - endVideo
+  - otherCam
   layers:
   - Default
   - TransparentFX
