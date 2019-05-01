@@ -26,6 +26,10 @@ public class CanvasText : MonoBehaviour
         {
             numKeysForScene = 4;
         }
+        if (SceneManager.GetActiveScene().name == "spaceLevel")
+        {
+            numKeysForScene = 2;
+        }
     }
 
     // Update is called once per frame
