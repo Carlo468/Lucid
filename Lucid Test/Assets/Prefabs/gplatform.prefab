@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2423818967316522133}
   - component: {fileID: 2423818967316522132}
   - component: {fileID: 3875158885220433106}
+  - component: {fileID: 3139526776359113780}
   m_Layer: 0
   m_Name: gplatform
   m_TagString: platformGrab
@@ -104,3 +105,19 @@ Halo:
     serializedVersion: 2
     rgba: 4279366426
   m_Size: 4.93
+--- !u!54 &3139526776359113780
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2423818967316522123}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -34,7 +34,12 @@ ModelImporter:
     4300004: RING_2
     4300006: RING_3
     4300008: RING_4
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shiphull
+    second: {fileID: 2800000, guid: 7a09de6392812674aa9252135345ede0, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

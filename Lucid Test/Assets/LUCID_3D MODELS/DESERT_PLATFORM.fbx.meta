@@ -17,7 +17,29 @@ ModelImporter:
     3300002: PLATFORM
     4300000: FRAME
     4300002: PLATFORM
-  externalObjects: {}
+    6400000: FRAME
+    6400002: PLATFORM
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface4
+    second: {fileID: 2100000, guid: b2801df97f394eb40931ed7288ac9a6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface5
+    second: {fileID: 2100000, guid: a7d4ef0b9cec9ee41a6349fcf9acde25, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 27144330-copper-orange-background-autumn-thanksgiving-color-design-vintage-grunge-texture-web-template-backgr
+    second: {fileID: 2800000, guid: 680e2a3dc6a32704d8b1de4fdd93f691, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: gold
+    second: {fileID: 2800000, guid: 47f63305f3c48c44faeb64921a9ea548, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,7 +72,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
