@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &14258811 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6212064513503605920, guid: 89f0a709d2132da4babb0a589aa43193,
+    type: 3}
+  m_PrefabInstance: {fileID: 1559523969174641301}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &52454228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5185,9 +5191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 198429738323203756, guid: 4075e069a8c134249b92bd359dd04984, type: 3}
-  soundPlayer: {fileID: 0}
-  keySound: {fileID: 0}
-  keyPickUpVolume: 0
+  soundPlayer: {fileID: 14258811}
+  keySound: {fileID: 8300000, guid: 1190d32bbc4201b4c9c15f5fd0bafd3f, type: 3}
+  keyPickUpVolume: 1
 --- !u!136 &1952824808
 CapsuleCollider:
   m_ObjectHideFlags: 0
