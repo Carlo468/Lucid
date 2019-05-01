@@ -20,6 +20,7 @@ public class TitleScreen : MonoBehaviour
     public void OnStartButton()
     {
         SceneManager.LoadScene("Nexus");
+        Grab.tutorialLevel = true;
         
     }
 
